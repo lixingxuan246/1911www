@@ -76,7 +76,7 @@ class AlipayController extends Controller
 
 
     protected function sign($data)
-    {
+{
 //        if ($this->checkEmpty($this->rsaPrivateKeyFilePath)) {
 ////            $priKey = $this->rsaPrivateKey;
 ////
@@ -88,15 +88,15 @@ class AlipayController extends Controller
 ////            $res = openssl_get_privatekey($priKey);
 ////        }
 
-        $priKey = file_get_contents(storage_path('ali_priv.key'));
-        $res = openssl_get_privatekey($priKey);
-        //var_dump($res);echo '<hr>';
+    $priKey = file_get_contents(storage_path('ali_priv.key'));
+    $res = openssl_get_privatekey($priKey);
+    //var_dump($res);echo '<hr>';
 
-        ($res) or die('您使用的私钥格式错误，请检查RSA私钥配置');
+    ($res) or die('您使用的私钥格式错误，请检查RSA私钥配置');
 
-        openssl_sign($data, $sign, $res, OPENSSL_ALGO_SHA256);
-        openssl_free_key($res);
-        $sign = base64_encode($sign);
-        return $sign;
-    }
+    openssl_sign($data, $sign, $res, OPENSSL_ALGO_SHA256);
+    openssl_free_key($res);
+    $sign = base64_encode($sign);
+    return $sign;
+}
 }

@@ -434,11 +434,9 @@
             url : "http://api.1911.com/register",
             type : 'GET',
             async :true,
-
             data :{'text':text,'email':email,'pass':pass},
-            dataType : "jsonp",
+            dataType : "json",
 
-            jsonpCallback:"abc",   //自定义回调函数名
             success:function(res){
                 // alert(test)
 
